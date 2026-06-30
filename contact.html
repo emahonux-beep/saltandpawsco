@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Salt and Paws</title>
+  <meta name="description" content="Get in touch with Salt and Paws Co to book in-home pet care in Charleston, SC.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav-wrap">
+      <a href="index.html" class="logo"><img src="assets/logohorizontal-new-light.svg" alt="Salt and Paws - Coastal Pet Care"></a>
+      <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="about.html">About + Team</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html" class="book-link">Book now</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="page-banner">
+    <div class="container">
+    <p class="eyebrow">Get in touch</p>
+  <h1>Contact Us</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width: 680px;">
+      <p style="text-align:center; margin-bottom: 2.5rem;">
+        Tell us about you and your pet, and we'll be in touch to set up a meet-and-greet and get your
+        service booked.
+      </p>
+
+      <!--
+        IMPORTANT (read this comment, it won't show on the live page):
+        GitHub Pages can only host static files — it cannot run server code,
+        so a plain HTML form has nowhere to "send" itself.
+        The easiest free fix is Formspree (https://formspree.io):
+          1. Sign up for a free Formspree account
+          2. Create a new form, it gives you an endpoint like
+             https://formspree.io/f/abcd1234
+          3. Replace the action="" value below with that URL
+        Until you do that, this form will not actually send anywhere.
+      -->
+      <form action="https://formspree.io/f/your-form-id" method="POST">
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="first-name">First Name <span class="hint">(required)</span></label>
+            <input type="text" id="first-name" name="first_name" required>
+          </div>
+          <div class="form-field">
+            <label for="last-name">Last Name <span class="hint">(required)</span></label>
+            <input type="text" id="last-name" name="last_name" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="email">Email <span class="hint">(required)</span></label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Preferred method of contact</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="radio" name="contact_method" value="Text"> Text</label>
+            <label class="choice-option"><input type="radio" name="contact_method" value="Call"> Call</label>
+            <label class="choice-option"><input type="radio" name="contact_method" value="Email"> E-mail</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="num-pets">Number of pets</label>
+            <input type="number" id="num-pets" name="number_of_pets" min="1">
+          </div>
+          <div class="form-field">
+            <label>Species</label>
+            <div class="choice-group">
+              <label class="choice-option"><input type="checkbox" name="species" value="Dog"> Dog</label>
+              <label class="choice-option"><input type="checkbox" name="species" value="Cat"> Cat</label>
+              <label class="choice-option"><input type="checkbox" name="species" value="Other"> Other</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label>Services interested in</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="checkbox" name="services" value="Walking"> Walking</label>
+            <label class="choice-option"><input type="checkbox" name="services" value="Drop-in visit"> Drop-in visit</label>
+            <label class="choice-option"><input type="checkbox" name="services" value="Overnight care"> Overnight care</label>
+            <label class="choice-option"><input type="checkbox" name="services" value="Boarding"> Boarding</label>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label for="notes">Anything we need to know?</label>
+          <textarea id="notes" name="notes" rows="5"></textarea>
+        </div>
+
+        <button type="submit" class="btn submit-btn">Send</button>
+      </form>
+
+      <hr class="divider">
+
+      <p style="text-align:center;">
+        Or reach us directly:<br>
+        <a href="mailto:hello@saltandpawsco.com">hello@saltandpawsco.com</a><br>
+        <a href="tel:2034820166">(203) 482-0166</a>
+      </p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <img src="assets/logostacked-light.svg" alt="Salt and Paws logo" style="height:70px;">
+      </div>
+      <div>
+        <h4>Location</h4>
+        <p>Charleston, South Carolina</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="mailto:hello@saltandpawsco.com">hello@saltandpawsco.com</a></p>
+        <p><a href="tel:2034820166">(203) 482-0166</a></p>
+      </div>
+    </div>
+    <p class="footer-bottom">&copy; 2026 Salt and Paws Co.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

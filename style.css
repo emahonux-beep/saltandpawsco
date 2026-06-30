@@ -1,0 +1,695 @@
+/* =========================================================
+   Salt and Paws — stylesheet
+   A quick guide to how this file is organized:
+   1. Setup (fonts, colors, resets)
+   2. Header / Navigation
+   3. Hero section
+   4. Reusable section styles
+   5. Cards (services, team)
+   6. FAQ accordion
+   7. Footer
+   8. Responsive (mobile) rules
+   ========================================================= */
+
+/* ---------- 1. Setup ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Carattere&family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Brand color palette */
+  --teal-dark: #1F2A37;     /* header, footer, headings */
+  --teal: #5F8F91;          /* secondary accent: dividers, small details */
+  --oyster: #F6F2EC;        /* main page background */
+  --shell: #EDE3D2;         /* section band background */
+  --driftwood: #4B4438;     /* body text */
+  --gold: #CB9959;          /* accent: buttons, links, icon color */
+  --white: #FFFFFF;
+
+  --font-script: 'Carattere', cursive;  /* h1 headings, in the brand voice */
+  --font-display: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--driftwood);
+  background-color: var(--oyster);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Accessible focus state for keyboard users */
+a:focus-visible,
+button:focus-visible,
+.faq-question:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  color: var(--teal-dark);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: clamp(3rem, 7vw, 5.2rem);
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+
+h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); }
+h3 { font-size: 1.2rem; }
+
+/* The handwritten script accent, used for small eyebrow labels
+   above headings — pairs with the h1 voice without competing with it */
+.script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  color: var(--teal-dark);
+  line-height: 1;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--gold);
+  color: var(--white);
+  padding: 0.75rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.btn:hover {
+  background-color: var(--teal-dark);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+/* ---------- 2. Header / Navigation ---------- */
+
+.site-header {
+  background-color: var(--teal-dark);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.logo img {
+  height: 42px;
+  display: block;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--oyster);
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.nav-links .book-link {
+  background-color: var(--gold);
+  color: var(--white);
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+}
+
+.nav-links .book-link:hover {
+  background-color: var(--oyster);
+  color: var(--teal-dark);
+}
+
+/* Mobile menu toggle button (hidden on desktop) */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--oyster);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* ---------- 3. Hero section ---------- */
+
+.hero {
+  position: relative;
+  background-color: var(--teal-dark);
+  color: var(--oyster);
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 60vh;
+  min-height: 380px;
+  object-fit: cover;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(31,42,55,0.25) 0%, rgba(31,42,55,0.65) 100%);
+}
+
+.hero-text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1.5rem;
+  z-index: 1;
+}
+
+.hero-text h1 {
+  color: var(--white);
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+
+.page-banner {
+  background-color: var(--teal-dark);
+  padding: 3.5rem 0;
+}
+
+.page-banner .container {
+  text-align: left;
+}
+
+.page-banner h1 {
+  color: var(--white);
+}
+
+/* ---------- 4. Reusable section styles ---------- */
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-shell {
+  background-color: var(--shell);
+}
+
+.section-title {
+  text-align: left;
+  max-width: 700px;
+  margin: 0 0 2.5rem;
+}
+
+.section-title p {
+  margin-top: 0.8rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(107,91,77,0.25);
+  margin: 3rem 0;
+}
+
+/* Auto-scrolling ticker strip on home page */
+.ticker {
+  background-color: var(--teal-dark);
+  overflow: hidden;
+  padding: 0.85rem 0;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 32s linear infinite;
+}
+
+.ticker-track span {
+  display: inline-flex;
+  align-items: center;
+  color: var(--oyster);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0 3.2rem;
+  border-right: 1px solid rgba(247,244,236,0.25);
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
+}
+
+/* ---------- Icon badges (service icons, etc.) ---------- */
+
+.icon-badge {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--shell);
+  border-radius: 50%;
+  margin-bottom: 0.9rem;
+}
+
+.icon-badge img {
+  width: 30px;
+  height: 30px;
+}
+
+.service-card-body .icon-badge {
+  margin-bottom: 1rem;
+}
+
+.learn-more-link {
+  display: inline-block;
+  margin-left: 0.8rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+
+.learn-more-link:hover {
+  color: var(--gold);
+}
+
+/* ---------- Service detail pages ---------- */
+
+.detail-hero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.detail-hero > img {
+  border-radius: 16px;
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+}
+
+.detail-price {
+  display: inline-block;
+  background-color: var(--shell);
+  color: var(--teal-dark);
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+
+.detail-list {
+  margin: 1rem 0 1.8rem 1.1rem;
+}
+
+.detail-list li {
+  margin-bottom: 0.4rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+
+.back-link:hover {
+  color: var(--gold);
+}
+
+@media (max-width: 800px) {
+  .detail-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Decorative side illustration (about page, hero accents) */
+.side-illustration {
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.side-illustration > img {
+  width: 100%;
+}
+
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.service-card {
+  background-color: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(22,48,46,0.08);
+}
+
+.service-card > img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.service-card-body {
+  padding: 1.5rem;
+}
+
+.service-price {
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.service-card ul {
+  margin: 0.8rem 0 1rem 1.1rem;
+}
+
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.team-card {
+  background-color: var(--white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(22,48,46,0.08);
+  display: flex;
+  align-items: stretch;
+}
+
+.team-card img {
+  width: 280px;
+  flex-shrink: 0;
+  height: auto;
+  object-fit: cover;
+}
+
+.team-card-body {
+  padding: 2rem;
+  flex: 1;
+}
+
+.team-role {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.6rem;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .team-card {
+    flex-direction: column;
+  }
+
+  .team-card img {
+    width: 100%;
+    height: 240px;
+  }
+}
+
+/* Social photo strip on home page */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.social-grid img {
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ---------- 6. FAQ accordion ---------- */
+
+.faq-item {
+  border-bottom: 1px solid rgba(107,91,77,0.25);
+}
+
+.faq-question {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--teal-dark);
+  padding: 1.3rem 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question .icon {
+  font-size: 1.4rem;
+  color: var(--gold);
+  transition: transform 0.2s ease;
+}
+
+.faq-item.open .faq-question .icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease;
+}
+
+.faq-answer p {
+  padding-bottom: 1.3rem;
+}
+
+/* ---------- Contact form ---------- */
+
+.form-row {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.form-field {
+  margin-bottom: 1.3rem;
+  flex: 1 1 200px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: var(--teal-dark);
+}
+
+.form-field .hint {
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--driftwood);
+  opacity: 0.75;
+}
+
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="tel"],
+.form-field input[type="number"],
+.form-field textarea {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--shell);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  background-color: var(--white);
+  color: var(--driftwood);
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: 2px solid var(--gold);
+  outline-offset: 1px;
+}
+
+.choice-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.5rem;
+}
+
+.choice-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.choice-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+}
+
+.submit-btn {
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+
+.site-footer {
+  background-color: var(--teal-dark);
+  color: var(--oyster);
+  padding: 3rem 0 2rem;
+  margin-top: 2rem;
+}
+
+.footer-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-grid h3 {
+  color: var(--oyster);
+  font-size: 1.2rem;
+  margin-bottom: 0.3rem;
+}
+
+.footer-grid h4 {
+  color: var(--gold);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.4rem;
+}
+
+.footer-grid a {
+  color: var(--oyster);
+}
+
+.footer-bottom {
+  text-align: center;
+  font-size: 0.85rem;
+  margin-top: 2.5rem;
+  opacity: 0.7;
+}
+
+/* ---------- 8. Responsive (mobile) rules ---------- */
+
+@media (max-width: 800px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--teal-dark);
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.5rem 0;
+    display: none;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .footer-grid {
+    flex-direction: column;
+    text-align: center;
+  }
+}
