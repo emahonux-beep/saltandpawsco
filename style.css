@@ -100,6 +100,8 @@ h3 { font-size: 1.2rem; }
   text-transform: uppercase;
   color: var(--gold);
   font-weight: 600;
+  margin-bottom: 0.6rem;
+  display: block;
 }
 
 .container {
@@ -614,6 +616,60 @@ h3 { font-size: 1.2rem; }
   border: none;
   cursor: pointer;
   font-size: 1rem;
+}
+
+/* ---------- Contact info card with icons ---------- */
+
+.contact-card {
+  background-color: var(--shell);
+  border-radius: 14px;
+  padding: 2rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(75,68,56,0.12);
+  color: var(--driftwood);
+}
+
+.contact-link:last-child {
+  border-bottom: none;
+}
+
+.contact-link:hover {
+  text-decoration: none;
+  color: var(--teal-dark);
+}
+
+.contact-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--white);
+  border-radius: 50%;
+  color: var(--gold);
+}
+
+.contact-icon svg {
+  width: 19px;
+  height: 19px;
+}
+
+.contact-label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--teal-dark);
+  margin-bottom: 0.1rem;
 }
 
 
