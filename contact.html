@@ -31,24 +31,22 @@
   </section>
 
   <section class="section">
-    <div class="container" style="max-width: 680px;">
-      <p style="text-align:center; margin-bottom: 2.5rem;">
+    <div class="container" style="max-width: 680px; margin-left: 0;">
+      <p style="margin-bottom: 2.5rem;">
         Tell us about you and your pet, and we'll be in touch to set up a meet-and-greet and get your
         service booked.
       </p>
 
       <!--
-        IMPORTANT (read this comment, it won't show on the live page):
-        GitHub Pages can only host static files — it cannot run server code,
-        so a plain HTML form has nowhere to "send" itself.
-        The easiest free fix is Formspree (https://formspree.io):
-          1. Sign up for a free Formspree account
-          2. Create a new form, it gives you an endpoint like
-             https://formspree.io/f/abcd1234
-          3. Replace the action="" value below with that URL
-        Until you do that, this form will not actually send anywhere.
+        This form is wired up to Web3Forms (https://web3forms.com), a free
+        service that emails form submissions straight to your inbox.
+        The access key below routes submissions to the account this key
+        was created with.
       -->
-      <form action="https://formspree.io/f/your-form-id" method="POST">
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="aa499414-a6d9-4c2b-9179-7756e8b27be8">
+        <input type="hidden" name="subject" value="New inquiry from saltandpawsco.com">
+        <input type="text" name="botcheck" style="display:none;" tabindex="-1" autocomplete="off">
 
         <div class="form-row">
           <div class="form-field">
@@ -81,18 +79,17 @@
           </div>
         </div>
 
-        <div class="form-row">
-          <div class="form-field">
-            <label for="num-pets">Number of pets</label>
-            <input type="number" id="num-pets" name="number_of_pets" min="1">
-          </div>
-          <div class="form-field">
-            <label>Species</label>
-            <div class="choice-group">
-              <label class="choice-option"><input type="checkbox" name="species" value="Dog"> Dog</label>
-              <label class="choice-option"><input type="checkbox" name="species" value="Cat"> Cat</label>
-              <label class="choice-option"><input type="checkbox" name="species" value="Other"> Other</label>
-            </div>
+        <div class="form-field">
+          <label for="num-pets">Number of pets</label>
+          <input type="number" id="num-pets" name="number_of_pets" min="1">
+        </div>
+
+        <div class="form-field">
+          <label>Species</label>
+          <div class="choice-group">
+            <label class="choice-option"><input type="checkbox" name="species" value="Dog"> Dog</label>
+            <label class="choice-option"><input type="checkbox" name="species" value="Cat"> Cat</label>
+            <label class="choice-option"><input type="checkbox" name="species" value="Other"> Other</label>
           </div>
         </div>
 
